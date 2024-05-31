@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+body {
+  background-image: url('bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+
+navbar-brand, .nav-link {
+  color: white; /* Purple color */
+}
+.navbar-brand:hover, .nav-link:hover {
+  color: grey; /* Lighter purple color on hover */
+}
+
+.btn-success {
+  background: #0b0c10; /* Purple gradient */
+  color: #ffffff;
+}
+
+.btn-success:hover {
+  background: linear-gradient(45deg, #6c4a8e, #0b0c10);
+  color: #ffffff;
+}
+
+.btn-outline-success {
+  color: grey; /* Green color */
+  border-color: grey;
+}
+.btn-outline-success:hover {
+  color: #ffffff;
+  background-color: grey;
+  border-color: grey;
+}
+/* Custom styles for the upload button */
+.btn-upload {
+  background: #0b0c10; /* Purple gradient */
+  border-color: grey;
+  color: #ffffff;
+}
+.btn-upload:hover {
+  background: linear-gradient(45deg, #6c4a8e, #0b0c10);
+  color: #ffffff;
+}
+/* Remove lines from background elements */
+
+
+/* Custom font for the navbar */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.navbar-brand{
+  background: none;
+  color: white;
+}
+
+/* Custom styles for the card */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card-body {
+  padding: 20px;
+}
+
+.nav{
+  margin-top: 20px;
+  width:1525spx;
+  height: 70px;
+  overflow: hidden;
+  margin: auto;
+  text-decoration: solid;
+  font-size: x-large;
+}

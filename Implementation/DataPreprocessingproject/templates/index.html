@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <div class="nav">
+        <ul>
+          <li><a href = "index.html" id="name">Data's Corner</a></li>
+        </ul>
+        <script src="https://kit.fontawesome.com/5c7fd64b03.js" crossorigin="anonymous"></script>
+      </div>
+    </head>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+      body {
+        background-image: url('bg.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;  
+        background-size: cover;
+      }
+
+      .nav{
+        width:1525spx;
+        height: 70px;
+        overflow: hidden;
+        margin: auto;
+        text-decoration: solid;
+      }
+
+      .nav ul{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        text-align: center;
+      } 
+      
+      .nav li{
+        display: block;
+        text-align: center;
+      }
+
+      #otnav{
+        float: right;
+      }
+
+      .nav a:link{
+        width: 200px;
+        height: 50px;
+        display: block;
+        text-decoration: none;
+        padding:20px;
+        font-size: 22px;
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      .nav a:hover{
+        font-weight: 700;
+      }
+
+      .nav a{
+        color: white;
+      }
+
+      #img2{
+        width: 100%;
+      }
+
+      .banner{
+        position: relative;
+        margin: 0 auto;
+      }
+
+      .banner img{
+        width: 100%
+      }
+
+      .heading{
+        color: #ffffff ;
+        position: absolute;
+        padding-left: 50px;
+        top: 15%;
+        width: 100%;
+        text-align: left;
+        font-size: 80px;
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      .button button{
+        background-color: #ffffff ;
+        padding: 15px 30px;
+        border: rgb(0, 0, 0);
+        font-size: 25px;
+        position: relative;
+        top: -350px;
+        right: -50px;
+        font-family: 'Montserrat', sans-serif;
+        border-radius: 20px;
+        color:#4b53e4;
+      }
+
+      .button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+
+    .button span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+
+    .button:hover span {
+      padding-right: 25px;
+    }
+
+    .button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+     
+    .heading1{
+        color: #4b53e4 ;
+        text-align: center;
+        font-size: 50px;
+        font-family: 'Montserrat', sans-serif;
+        padding-bottom: 0%;
+  
+      }
+
+      .main{
+        margin-left: 150px;
+        margin-right: 150px;
+        
+      }
+
+      .main {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        color: white ;
+      }
+
+      .container {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+  
+
+    .main{
+        margin-left: 150px;
+        margin-right: 150px;
+      }
+
+    .container1{
+    text-align: center;
+    margin-left: 200px;
+    width: 1000px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.container1 .card{
+    position: relative;
+    cursor: pointer;
+    padding-left: 25px;
+}
+
+.container1 .card .face{
+    width: 350px;
+    height: 200px;
+    transition: 0.5s;
+}
+
+.container1 .card .face.face1{
+    position: relative;
+    background: #f7a915;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transform: translateY(100px);
+}
+
+.container1 .card:hover .face.face1{
+    background: #ff5841;
+    transform: translateY(0);
+}
+
+.container1 .card .face.face1 .content{
+    opacity: 0.9;
+    transition: 0.5s;
+}
+
+.container1 .card:hover .face.face1 .content{
+    opacity: 1;
+}
+
+.container1 .card .face.face1 .content img{
+    max-width: 100px;
+}
+
+.container1 .card .face.face1 .content h3{
+  
+    margin: 10px 0 0;
+    padding: 15px;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container1 .card .face.face2{
+    position: relative;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    transform: translateY(-100px);
+}
+
+.container1 .card:hover .face.face2{
+    transform: translateY(0);
+}
+
+.container1 .card .face.face2 .content p{
+    margin: 0;
+    padding: 0;
+}
+
+.container1 .card .face.face2 .content a{
+    margin: 15px 0 0;
+    display:  inline-block;
+    text-decoration: none;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    border: 1px solid #333;
+}
+
+.container1 .card .face.face2 .content a:hover{
+    background: #333;
+    color: #fff;
+}
+
+
+    </style>
+
+    
+    <body>
+        <div class="intro">
+          <div class="row">
+            <div class="banner">
+              <img src="lp1-01.png" id="img2">
+              <h1 class="heading">Start <br>Pre-processing <br>Now!!<br></h1>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="button">
+          <a href="http://127.0.0.1:8000/">
+          <button type="button"><b><span>Begin</span></b></button>
+          </a>
+        </div>
+        <div class="main">
+          <h1 class="heading1"><span>Explore Our Key Pre-Processing Tasks!</h1>
+          <p style="text-align: center;">We acknowledge the importance of pre-processing data to make it usable. So explore our range of Pre-processing tasks available and unlock the full potential of your data with our accurate, precise and faultless system, and pre-process your data with ease.  </p>
+        </div>     
+
+      <div class="container1">
+        <div class="card">
+            <div class="face face1">
+                <div class="content">
+                    <i class="fa-solid fa-pen-to-square" style="font-size: 50px; color: #000000 ;"></i>
+                    <h3>Tokenization</h3>
+                </div>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <p>Breakup your texts into small meaningful tokens to which can be used as building blocks to helps AI models understand and process human language.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="face face1">
+                <div class="content">
+                  <i class="fa-solid fa-spell-check" style="font-size: 50px; color: #000000 ;"></i>
+                    <h3>Lemmatization</h3>
+                </div>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <p>Use Lemmatization to find root words from the dictionary and use it for various purposes.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+          <div class="face face1">
+              <div class="content">
+                <i class="fa-solid fa-file-word" style="font-size: 50px; color: #000000 ;"></i>
+                  <h3>Stopword Removal</h3>
+              </div>
+          </div>
+          <div class="face face2">
+              <div class="content">
+                  <p>Leverage Stopword Removal to facilitate the process of eliminating words that occur frequently in a language but carry little or no meaning.</p>
+              </div>
+          </div>
+      </div>
+        
+        
+    </div>
+    <br>
+
+
+
+
+
+
+      

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Pre-processor</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/static/styles.css?v=2">
+</head>
+<body>
+  <nav id="mainNavigation" class="nav">
+    <div class="container">
+      <a class="navbar-brand" href="http://127.0.0.1:5500/templates/index.html">
+        Data Pre-processor
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="templates/index.html">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+<div class="container mt-5" >
+  <div class="row">
+      <div class="col-md-6 offset-md-3" >
+          <h2 class="text-center mb-4" style="color: #4b53e4;">Data Pre-processing</h2>
+          <div class="card" >
+              <div class="card-body" >
+                  <p class="text-center">Upload your CSV file</p>
+                  <form method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="mb-3">
+                          <label for="myfile" class="form-label">Choose CSV File:</label>
+                          <input type="file" class="form-control" name="myfile">
+                      </div>
+                      <!-- Upload button with gradient color -->
+                      <button type="submit" class="btn btn-upload">Upload</button>
+                  </form>
+                  {% if messages %}
+                  {% for message in messages %}
+                  <div class="alert alert-{{message.tags}}" role="alert">
+                      <p{% if message.tags %} class="" {% endif %}>{{ message }}</p>
+                  </div>
+                  {% endfor %}
+                  {% endif %}
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2 class="text-center mb-4" style="color: #4b53e4;">Select Tasks</h2>
+      <div class="card">
+        <div class="card-body">
+          <p class="text-center">Select the tasks you want to perform on the uploaded CSV file</p>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="tokenization" id="taskTokenization">
+            <label class="form-check-label" for="taskTokenization">
+              Tokenization
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="lemmatization" id="taskLemmatization">
+            <label class="form-check-label" for="taskLemmatization">
+              Lemmatization
+            </label>
+          </div>  
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="stopword_removal" id="taskStopwordRemoval">
+              <label class="form-check-label" for="taskStopwordRemoval">
+                Stopword Removal
+              </label>
+            </div>
+          <!-- Run Tasks Button -->
+          <button type="button" class="btn btn-success mt-3" id="runTasksBtn">Run Tasks</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div id="previewContainer" class="container mt-5"> -->
+<!-- <div id="previewContainer" class="container mt-5" style="display: none;"> The style="display: none;" attribute is used to initially hide the preview container and the download button. This ensures that they are not visible until the tasks have been executed and the modified CSV dataset is ready for preview and download. -->
+<div id="previewContainer" class="container mt-5">  
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2 class="text-center mb-4" style="color: #4b53e4;">Preview CSV Dataset</h2>
+      <div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Question Tokens</th>
+                  <th>Question Lemmas</th>
+                  <th>Sentence Tokens</th>
+                  <th>Sentence Lemmas</th>
+                  <th>Question StopWords</th>
+                  <th>Sentence StopWords</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for sample in preprocessed_data %}
+                <tr>
+                  <td>{{ sample.question_tokens|default:"N/A" }}</td>
+                  <td>{{ sample.question_lemmas|default:"N/A" }}</td>
+                  <td>{{ sample.sentence_tokens|default:"N/A" }}</td>
+                  <td>{{ sample.sentence_lemmas|default:"N/A" }}</td>
+                  <td>{{ sample.question_stopwords|default:"N/A" }}</td>
+                  <td>{{ sample.sentence_stopwords|default:"N/A" }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <a href="{% url 'preview' %}" class="btn btn-success mt-3">Preview</a>
+          <!-- <div id="csvPreview"></div><a id="downloadButton" class="btn btn-success mt-3" href="#">Download Modified CSV</a> -->
+          <a id="downloadButton" class="btn btn-success mt-3" href="{% url 'download_preprocessed_dataset' %}">Download Modified CSV</a>
+          
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('#runTasksBtn').addEventListener('click', function() {
+      // Get selected tasks
+      var selectedTasks = [];
+      if (document.getElementById('taskTokenization').checked) {
+        selectedTasks.push('tokenization');
+      }
+      if (document.getElementById('taskLemmatization').checked) {
+        selectedTasks.push('lemmatization');
+      }
+      if (document.getElementById('taskStopwordRemoval').checked) {
+        selectedTasks.push('stopword_removal');
+      }
+
+      // Send an AJAX request to run the tasks
+      fetch('/run_tasks/', {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': getCookie('csrftoken'),
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ tasks: selectedTasks })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Show a success message to the user
+        alert(data.message);
+      })
+      .catch(error => {
+        // Show an error message if the request fails
+        console.error('Error:', error);
+      });
+    });
+  });
+
+  // Function to get CSRF token from cookie (required for Django AJAX requests)
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

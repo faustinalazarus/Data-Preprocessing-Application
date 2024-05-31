@@ -16,3 +16,20 @@ stage in handling data, training and testing models, data analysis, etc.
 ![Admin Page](https://github.com/faustinalazarus/Data-Preprocessing-Application/assets/82258265/493d9871-ec3b-4813-a24a-df9003ead0ba)
 ![Admin Page (1)](https://github.com/faustinalazarus/Data-Preprocessing-Application/assets/82258265/34e0d707-dc0e-41e4-b997-4320167b9edf)
 ![Excel Page](https://github.com/faustinalazarus/Data-Preprocessing-Application/assets/82258265/4e2a8f69-beb6-4c40-9040-e04b86de84ca)
+
+
+Figures showcase the Home Page, designed to provide users with information
+about the pre-processing tasks involved in the subsequent page, namely the Data Preprocessor page. The Home Page offers an overview of the functionalities available, and the
+"Begin" button serves as a prompt to redirect users to the next page, where they can initiate
+the pre-processing tasks.
+The upload section is depicted, allowing users to upload datasets in CSV
+format for pre-processing. Only CSV files are accepted in this section, ensuring
+compatibility with the pre-processing framework. Users can select the desired CSV file
+containing the dataset that requires pre-processing, enabling seamless integration of
+external data into the framework for analysis and manipulation.
+The task selection interface, where users can choose specific preprocessing tasks to execute on the uploaded dataset. Upon selecting a task, the framework
+executes it, and a notification displaying "Tasks ran successfully" appears, providing users
+with real-time feedback on task execution progress.
+The preview section is depicted, enabling users to visualize the preprocessed dataset before downloading it in CSV format. This feature allows users to verify
+the effectiveness of the pre-processing tasks and make any necessary adjustments before
+finalizing the dataset
